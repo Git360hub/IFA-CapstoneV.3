@@ -1,0 +1,108 @@
+<form class="contact-form" method="POST">
+    {% csrf_token %} <!-- Generates hidden input -->
+    ...
+</form>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Contact Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    <style>
+        header {
+            font-family: "Rye", serif;
+            background-color: rgb(101, 155, 113);
+            color: black;
+            padding: 1rem 0;
+            text-align: center;
+            text-shadow: 0 0 3px white;
+        }
+        h1{
+            text-align: center;
+            text-decoration: underline;
+        }
+        h2{
+            text-align: center;
+        }
+        
+        body {
+            font-family: 'Abril Fatface';
+            text-align: center;
+           
+
+        }
+        footer {
+            font-family: 'Abril Fatface';
+            text-align: center;
+            padding: 1rem 0;
+            background-color: black(9, 9, 9);
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+    </head>
+<body>
+    <header>
+        <h1>Plant Information</h1>
+        <nav aria-label="Main navigation">
+            {% if is_authenticated %}
+          <h1>Welcome, {{ username }}!</h1>
+          <form method="POST" action="/logout/">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+          </form>
+      {% else %}
+          <p><a href="/home/">Home</a> |<a href="/signup/">Sign Up</a> | <a href="/login/">Login</a> </p>
+      {% endif%}
+          <a href="/about/">About Us</a> | <a href="/products/">Products</a> | <a href="/faq/">FAQ</a> | <a href="/contact/">Contact Us</a>
+          </nav>
+    </header>
+    <h2>Have Comments, Questions, or Suggestions? ...
+    </h2>
+    
+    
+    <img src = "https://images.freeimages.com/image/large-previews/c01/abstract-leaf-background-5695897.jpeg?fmt=webp&w=500" style= "width:500px;
+            height: 300px;
+            border: 10px double black;
+            padding: 10px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(101, 155, 113);
+            border-radius: 5px;
+            box-shadow: 10px 10px 100px rgb(141, 227, 80)">
+
+    <div class="contact-container">
+        <h1>Contact Us Below!</h1>
+        <form class="contact-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            <br><br>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <br><br>
+            <label for="subject">Subject:</label>
+            <textarea id="subject" name="subject" placeholder="Enter the subject of your message here." required></textarea>
+            <br><br>
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" placeholder="Enter your message here" required></textarea>
+            <br><br>
+            <button type="submit"> Send Message</button>
+        </form> 
+        <div class="contact-info">
+            <p>Email: crazyaboutplants@samplegmail.com</p>
+            <p>Phone: +1 (234) 567 8910</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 
+            We acknowledge that we live, play, and work on the traditional unceded lands of the Dënéndeh, Dakeł Keyoh, and Lheidli T'enneh. <br>
+            2025 CapstoneProject. All rights reserved.</p>
+        </footer>
+</body>
+</html>
+

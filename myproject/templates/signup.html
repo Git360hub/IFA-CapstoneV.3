@@ -1,0 +1,64 @@
+<form class="contact-form" method="POST">
+    {% csrf_token %} <!-- Generates hidden input -->
+    ...
+</form>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    <title>Sign Up</title>
+    <style>
+        header {
+            font-family: "Rye", serif;
+            background-color: rgb(101, 155, 113);
+            color: black;
+            padding: 1rem 0;
+            text-align: center;
+            text-shadow: 0 0 3px white;
+        }
+        footer {
+            font-family: 'Abril Fatface';
+            text-align: center;
+            padding: 1rem 0;
+            background-color: black;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to the wonderful website of plant information!</h1>
+        <nav aria-label="Main navigation">
+            {% if is_authenticated %}
+          <h1> {{ username }}!</h1>
+          <form method="POST" action="/logout/">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+          </form>
+      {% else %}
+          <p><a href="/home/">Home</a> | <a href="/login/">Login</a> </p>
+      {% endif%}
+          <a href="/about/">About</a> | <a href="/plants/">Products</a> | <a href="/faq/">FAQ</a> | <a href="/contact/">Contact</a>
+          </nav>
+    </header>
+
+    <h2>Create a New Account</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="/login/">Login</a></p>
+    <footer>
+        <p>&copy; 
+     We acknowledge that we live, play, and work on the traditional unceded lands of the Dënéndeh, Dakeł Keyoh, and Lheidli T'enneh. <br>
+    2025 CapstoneProject. All rights reserved.</p>
+        </footer>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+
+
+    <title>FAQ</title>
+    <style>
+        header {
+            font-family: "Rye", serif;
+            background-color: goldenrod;
+            color: black;
+            padding: 1rem 0;
+            text-align: center;
+            text-shadow: 0 0 3px white;
+        }
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1.2rem;
+            color: #007bff;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        
+
+        .icon {
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+
+        .faq-answer {
+            padding: 10px;
+            font-size: 1rem;
+            color: #555;
+            display: none;
+        }
+
+        .faq-question.active .icon {
+            content: "-";
+        }
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: goldenrod;
+            color: white;
+            margin-top: 2rem;
+        }
+       </style>
+
+
+
+
+
+<header>
+    <h1>Big Chief's Meadery</h1>
+    <nav aria-label="Main navigation">
+      {% if is_authenticated %}
+    <h1>Welcome, {{ username }}!</h1>
+    <form method="POST" action="/logout/">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+{% else %}
+    <p><a href="/home/">Home</a> | <a href="/signup/">Sign Up</a> | <a href="/login/">Login</a> </p>
+{% endif%}
+    <a href="/about/">About</a> | <a href="/products/">Products</a>| <a href="/faq/">FAQ</a> | <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+</header>
+    
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () =>{
+  const questions = document.querySelectorAll(".faq-question");
+  
+  questions.forEach(question => {
+    question.addEventListener("click", ()=> {
+      question.classList.toggle("active");
+      const answer = question.nextElementSibling;
+      const icon = question.querySelector(".icon");
+      
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+        icon.textContent = "+";
+      } else {
+        answer.style.display = "block";
+        icon.textContent ="-";
+      }
+    });
+  });
+  
+  
+});
+    </script>
+<section class="faq-section">
+    <h1 class="faq-title">Frequently Asked Questions</h1>
+    <div class="faq">
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          What is mead?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Mead is an alcoholic beverage made by fermenting honey mixed with water, often with the addition of fruits, spices, grains, or hops. 
+            The defining characteristic of mead is that the majority of its fermentable sugar comes from honey. 
+            Alcohol content in mead typically ranges from about 3.5% to over 20% by volume.
+            Mead can be still, carbonated, or naturally sparkling, and its flavor profile varies widely-it can be dry, semi-sweet, or sweet, depending on the recipe and fermentation process. <br> <br>
+            There are many varieties of mead, including:
+            <ul>
+            <li>Show mead: Made with just honey, water, and yeast.</li>
+
+            <li>Melomel: Mead with added fruit.</li>
+
+            <li>Metheglin: Mead with added spices or herbs.</li>
+
+            <li>Braggot: Mead made with both honey and malted barley.</li>
+
+            <li>Cyser: Mead made with honey and apple juice or cider.</li>
+            </ul>
+        </p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          What flavours of mead do you offer?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The mead flavours we currently offer are:
+            <ul>
+            <li>Chief's Ambrosia: Caramelized honey, orange & clove mead. (Type: Metheglin/Melomel)</li> <br>
+            <li>Big Blue Chew: Blueberry Honey Mead. (Type: Melomel)</li><br>
+            <li>Belve's Elixir: Cranberry Orange Honey Mead. (Type: Melomel)</li><br>
+            <li>Spazzarooni's Special Blend: Apple Mint Honey Mead. (Type: Type: Metheglin/Melomel)</li><br>
+            <li>Diezels Oil Leak: Blackberry Caramelized Honey Mead. (Type: Melomel)</li><br>
+            <li>Grizz's Sparkling Golden Delight: Sparkling Golden Apple Caramelized Honeywine.(Type: Sparkling Show Mead)</li><br>
+            <li>Remi's Classic Enchantment: Classic Oaked Honeymead.(Type: Oak Aged Show Mead)</li><br>
+            </ul>
+        </p>
+        </div>
+      </div>
+
+
+          <div class="faq-item">
+        <button class="faq-question">
+          Do you offer international shipping?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>No, unfortunately we do not offer international shipping at this time.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          How can I contact support?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>You can contact our support team via email at bigchiefsmeadery@gmail.com or by phone number at: +1 (236) 888 2308.</p>
+        </div>
+      </div> 
+      
+    </div>
+  </section>
+</body>
+
+
+<footer>
+<p>&copy; 
+     We acknowledge that we live, play, and work on the traditional unceded lands of the Dënéndeh, Dakeł Keyoh, and Lheidli T'enneh. <br>
+    2025 CapstoneProject. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

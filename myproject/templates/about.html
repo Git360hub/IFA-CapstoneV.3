@@ -1,0 +1,155 @@
+<form class="contact-form" method="POST">
+    {% csrf_token %} <!-- Generates hidden input -->
+    ...
+</form>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Tagesschrift&display=swap" rel="stylesheet">
+
+    <title>About Us</title>
+    <style>
+        header {
+            font-family: "Rye", serif;
+            background-color: rgb(101, 155, 113);
+            color: black;
+            padding: 1rem 0;
+            text-align: center;
+            text-shadow: 0 0 3px white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: black;
+            text-align: center;
+            text-decoration: underline;
+            font-family: "Rye", serif;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 16px;
+            font-family: "Tagesschrift", system-ui;
+        }
+
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            border-radius: 25px;
+        }
+
+        .team-member {
+            flex: 1 1 calc(33.33% - 1rem);
+            background: rgb(101, 155, 113);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px black;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: rgb(101, 155, 113);
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>About Us</h1>
+        <nav aria-label="Main navigation">
+            {% if is_authenticated %}
+            <h1>Welcome, {{ username }}!</h1>
+            <form method="POST" action="/logout/">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+            {% else %}
+            <p><a href="/home/">Home</a> |<a href="/signup/">Sign Up</a> | <a href="/login/">Login</a> </p>
+            {% endif%}
+            <a href="/about/">About Us</a> | <a href="/plants/">Plants</a> | <a href="/faq/">FAQ</a> | <a
+                href="/contact/">Contact</a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <h1> Who We Are</h1>
+        <div class="prince-george">
+            <img src="https://media.istockphoto.com/id/1441825352/photo/prince-george-british-columbia-canada.jpg?s=612x612&w=0&k=20&c=4SUXBq6-SLDyT5yaqqHwqXog0vXhbk-ijtzERJ8bzX8="
+                style="height: 400px;
+        width: 600px;
+        border: 10px double black;
+        padding: 10px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(101, 155, 113);
+        border-radius: 25px;" alt="Prince George, British Columbia">
+
+            <p> (Prince George, British Columbia)</p>
+        </div>
+
+
+        <div class="team">
+            <div class="team-member">
+                <img src="https://avatars.githubusercontent.com/u/206967300?v=4" style="height: 300px;
+        border: 10px double black;
+        padding: 10px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(101, 155, 113);
+        border-radius: 25px;" alt="Team Member">
+                <h2> Desseray Stepski</h2>
+                <h3> Co-Founder & CEO</h3>
+                <p> A Metis woman born and raised in Prince George British Columbia.<br>
+                    Motivated and detail-oriented professional transitioning into web development with a strong
+                    foundation in problem-solving, attention to detail, and customer service. <br>
+                    Experienced in following structured processes, collaborating with teams, and managing
+                    documentation—skills that translate well into coding and software development. <br>
+                    Currently advancing technical expertise through hands-on training in Python, web development, and
+                    digital marketing. <br>
+                    Eager to apply newly acquired programming skills in a dynamic environment, contribute to innovative
+                    projects, and continuously grow as a developer.<br>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+    <footer>
+        <p>&copy;
+            We acknowledge that we live, play, and work on the traditional unceded lands of the Dënéndeh, Dakeł Keyoh,
+            and Lheidli T'enneh. <br>
+            2025 CapstoneProject. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

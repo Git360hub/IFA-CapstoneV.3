@@ -1,0 +1,140 @@
+<form class="contact-form" method="POST">
+  {% csrf_token %} <!-- Generates hidden input -->
+  ...
+</form>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Tagesschrift&display=swap" rel="stylesheet">
+  
+<title>Home</title>
+  <style>
+      header {
+            font-family: 'Abril Fatface';
+            background-color: rgb(101, 155, 113);
+            color: whitesmoke;
+            padding: 1rem 0;
+            text-align: center;
+            text-shadow: 0 0 3px white(249, 249, 246);
+            border: 5px solid black;
+        }
+      
+      header h1 {
+            margin: 15px;;
+            font-size: 2.5em;
+            text-decoration: underline;
+      }
+
+      img {
+        float: left;
+        clip-path: circle(50%);
+        shape-outside: circle(45%);
+        height: 300px;
+        margin: 10px;
+        
+      }
+      img a {
+        float: center;
+        height: 30px;
+        margin: 10px;
+        
+      }
+      div {
+        border: 5px solid black;
+        padding: 10px;
+      }
+ 
+      body {
+        font-family: "Tagesschrift", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, rgb(14, 95, 55),rgb(28, 108, 51), rgb(175, 236, 177));
+        color: #fff;
+        text-align: center;
+      }
+      
+      nav {
+        margin-top: 10px;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1.2em;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+      .content {
+        text-align: center;
+        padding: 50px 20px 70px 20px;
+      }
+      .content h1{
+        text-align: center;
+        padding: 50px 250px;
+      }
+      .content p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      footer {
+        font-family: 'Abril Fatface';
+        background-color: black;
+        text-align: center;
+        padding:10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      footer p {
+        margin: 0;
+        font-size: 0.9em;
+      }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome the wonderful website of plant information!</h1>
+    <nav aria-label="Main navigation">
+      {% if is_authenticated %}
+    <h1> {{ username }}!</h1>
+    <form method="POST" action="/logout/">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+        <p><a href="/membersonly/">Members Only</a> </p>
+    </form>
+{% else %}
+    <p><a href="/signup/">Sign Up</a> | <a href="/login/">Login</a> </p>
+{% endif%}
+    <a href="/about/">About</a> | <a href="/products/">Products</a>| <a href="/faq/">FAQ</a> | <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <div>
+    
+<img src = "https://images.freeimages.com/images/large-previews/852/bialowieza-forrest-1369627.jpg?fmt=webp&w=500" alt="Image of a bialowieza-forrest-1369627"
+>
+
+  <div class="content">
+    <h1>  Welcome to the wonderful website of plant information!</h1>
+    <p> 
+      The fauna that surrounds us contains magical secrets. Explore our site to learn more.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 
+     We acknowledge that we live, play, and work on the traditional unceded lands of the Dënéndeh, Dakeł Keyoh, and Lheidli T'enneh. <br>
+    2025 CapstoneProject. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,87 @@
+
+<form class="contact-form" method="POST">
+    {% csrf_token %} <!-- Generates hidden input -->
+    ...
+</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Tagesschrift&display=swap" rel="stylesheet">
+
+    <title>Members Only</title>
+    <style>
+        header {
+            font-family: "Rye", serif;
+            background-color: rgb(101, 155, 113);
+            color: black;
+            padding: 1rem 0;
+            text-align: center;
+            text-shadow: 0 0 3px white;
+        }
+        h1{
+            text-decoration: underline;
+        }
+        body {
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: black;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+ <h1>MEMBERS ONLY</h1>
+ <nav aria-label="Main navigation">
+    {% if is_authenticated %}
+  <h1>Welcome, {{ username }}!</h1>
+  <form method="POST" action="/logout/">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+  </form>
+{% else %}
+  <p><a href="/home/">Home</a>| <a href="/plants/">Products</a></p>
+{% endif%}
+    <a href="/about/">About</a>  | <a href="/faq/">FAQ</a> | <a href="/contact/">Contact</a>
+  </nav>
+</header>    
+    <body>
+        <div class="content">
+            <h1> Sage </h1>
+            <h2> Check out this months featured plant!</h2>
+            <img src = "https://images.freeimages.com/image/large-previews/b75/sage-herbs-5695932.png?fmt=webp&w=500"
+            style = "height: 300px;
+            border: 10px double black;
+            padding: 10px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(176, 239, 138);
+            border-radius: 5px;
+            box-shadow: 10px 10px 100px rgb(25, 165, 49)">
+            <ul>
+                <li>Sage is commonly burned as a cultural and sacred ceremony cleansing practice called smudging.</li>
+                <li>When harvesting or purchasing sage be mindful of ethical harvesting.</li>
+                <li>Thujone is a neurotoxin in large doses, and can be found in sage.</li>
+            </ul>
+          </div>
+    <footer>
+    <p>&copy; 
+     We acknowledge that we live, play, and work on the traditional unceded lands of the Dënéndeh, Dakeł Keyoh, and Lheidli T'enneh. <br>
+    2025 CapstoneProject. All rights reserved.</p>
+    </footer>
+    
+    </body>
+    </html>
