@@ -19,7 +19,7 @@ def about_view(request):
 def contact_view(request):
     return render(request, 'contact.html')
 
-def products_view(request):
+def plants_view(request):
     return render(request, 'plants.html')
 
 def faq_view(request):
