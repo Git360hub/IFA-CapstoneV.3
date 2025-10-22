@@ -12,39 +12,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rye&family=Tagesschrift&display=swap" rel="stylesheet">
 
-  <title>Sacred Circle Macikwanâsa</title>
+  <title>Sacred Circle </br>
+    Macikwanâsa</title>
   <style>
     header {
-      font-family: 'Abril Fatface';
-      background-color: rgb(101, 155, 113);
-      color: whitesmoke;
-      padding: 1rem 0;
-      text-align: center;
-      text-shadow: 0 0 3px white(249, 249, 246);
-      border: 5px solid black;
+      background-image: url("{% static 'Images/BannerV.2.jpg' %}");
+      background-size: contain;
+      background-position: center;
+      height: auto;
+      width: auto;
+      margin: 0;
+      padding: 250;
+      border: none;
     }
 
-    header h1 {
-      margin: 15px;
-      ;
-      font-size: 2.5em;
-      text-decoration: underline;
+    header img {
+      display: none;
+      /* Hide inline img */
     }
 
     img {
+      width: 100%;
+      /* Make image fill the header width */
+      height: auto;
+      /* Maintain aspect ratio */
+      display: block;
+      /* Remove inline spacing */
       float: left;
-      clip-path: circle(50%);
-      shape-outside: circle(45%);
-      height: 300px;
-      margin: 10px;
-
-    }
-
-    img a {
-      float: center;
-      height: 30px;
-      margin: 10px;
-
+      /* Avoid floating conflicts */
+      clip-path: circle (45%);
+      /* Remove clip-path for full display */
+      shape-outside: circle (45%);
+      margin: 0;
     }
 
     div {
@@ -59,8 +58,9 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, rgb(14, 95, 55), rgb(28, 108, 51), rgb(175, 236, 177));
-      color: #fff;
+      color: black;
       text-align: center;
+      text-decoration: underline;
     }
 
     nav {
@@ -68,8 +68,8 @@
     }
 
     nav a {
-      color: #fff;
-      text-decoration: none;
+      color: black;
+      text-decoration: underline;
       margin: 0 15px;
       font-size: 1.2em;
     }
@@ -114,6 +114,7 @@
 
 <body>
   <header>
+    <img src="{% static 'Images/Banner.jpg' %}" alt="Image of Sacred Circle Macikwanâsa's banner">
     <h1>Sacred Circle Macikwanâsa</h1>
     <nav aria-label="Main navigation">
       {% if is_authenticated %}
