@@ -28,7 +28,6 @@
 
     header img {
       display: none;
-      /* Hide inline img */
     }
 
     img {
@@ -38,7 +37,6 @@
       justify-content: left;
       align-items: left;
       float: left;
-       /* adds spacing from adjacent content */
     }
 
     div {
@@ -55,7 +53,6 @@
       background: linear-gradient(to bottom, rgb(14, 95, 55), rgb(28, 108, 51), rgb(175, 236, 177));
       color: black;
       text-align: center;
-      text-decoration: underline;
     }
 
     nav {
@@ -73,14 +70,15 @@
       text-decoration: underline;
     }
 
+    .content h1 {
+      text-align: center;
+      text-decoration: underline;
+      padding: 50px 250px;
+    }
+
     .content {
       text-align: center;
       padding: 50px 20px 70px 20px;
-    }
-
-    .content h1 {
-      text-align: center;
-      padding: 50px 250px;
     }
 
     .content p {
@@ -109,7 +107,7 @@
 
 <body>
   <header>
-    
+
 
     <nav aria-label="Main navigation">
       {% if is_authenticated %}
