@@ -2,6 +2,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -19,8 +23,8 @@ def signup_view(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save() # Save user to database
-        login(request, user) # Log in the new user
-        return redirect('/') # Redirect to home page
+            login(request, user) # Log in the new user **only if created**
+            return redirect('/') # Redirect to home page
     else:
         form = UserCreationForm() # Create empty form if it's a GET request
     return render(request, 'signup.html', {'form': form})
@@ -29,5 +33,7 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
         return redirect('/')
+    
+
 
 

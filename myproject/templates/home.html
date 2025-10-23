@@ -1,7 +1,7 @@
 <form class="contact-form" method="POST">
   {% csrf_token %} <!-- Generates hidden input -->
   {% load static %}
-  
+
 </form>
 
 <head>
@@ -16,52 +16,36 @@
 
   <style>
     header {
+      width: 100%;
+      height: 250px;               /* standard banner height */
+      margin: 0;
+      padding: 0;                 /* remove big padding causing overflow */
       background-image: url("{% static 'Images/BannerV.3.png' %}");
-      background-size: cover;
+      background-size: cover;     /* ensures image covers entire header */
       background-position: center;
-      height: auto;
-      width: auto;
-      margin: 10;
-      padding: 270;
-      border: none;
+      background-repeat: no-repeat;
+      position: relative;
+      border-radius: 5px;
+      overflow: hidden; 
     }
 
-    header img {
-      display: none;
+    header .banner-content {
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      bottom: 20px;
+      left: 0;
     }
 
     header nav {
-      position: absolute;
-      bottom: 10px;              
-      left: 50%;
-      transform: translateX(-50%);  
-      text-align: center;
-      width: 100%; 
-    }
-
-    img {
-      height: 300px;
-      padding: 100px;
-      margin-right: 10px;
-      justify-content: left;
-      align-items: left;
-      float: left;
-    }
-
-    div {
-      border: 5px solid black;
-      padding: 10px;
-    }
-
-    body {
-      font-family: "Tagesschrift", system-ui;
-      font-weight: 400;
-      font-style: normal;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, rgb(14, 95, 55), rgb(28, 108, 51), rgb(175, 236, 177));
-      color: black;
-      text-align: center;
+      display: inline-block;
+      /* Adjusts to fit nav links */
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.7);
+      /* Optional for legibility */
+      border-radius: 8px;
+      /* Optional: rounded appearance */
+      padding: 8px 16px;
     }
 
     nav {
@@ -77,6 +61,46 @@
       font-size: 2.5em;
     }
 
+    div {
+      border: 1px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        height: 150px;
+        /* Shorter on phones */
+      }
+
+      .banner-content h1 {
+        font-size: 1.3em;
+      }
+
+      nav a {
+        font-size: 1em;
+      }
+    }
+
+    img {
+      height: 300px;
+      padding: 100px;
+      margin-right: 10px;
+      justify-content: left;
+      align-items: left;
+      float: left;
+    }
+
+    body {
+      font-family: "Tagesschrift", system-ui;
+      font-weight: 400;
+      font-style: normal;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, rgb(14, 95, 55), rgb(28, 108, 51), rgb(175, 236, 177));
+      color: black;
+      text-align: center;
+    }
+
+    
     nav a:hover {
       text-decoration: underline;
     }
@@ -118,7 +142,7 @@
 
 <body>
   <header>
-
+    <div class="banner-content"></div>
 
     <nav aria-label="Main navigation">
       {% if is_authenticated %}
