@@ -1,6 +1,6 @@
 <form class="contact-form" method="POST">
     {% csrf_token %} <!-- Generates hidden input -->
-    ...
+    {% load static %}
 </form>
 
 <!DOCTYPE html>
@@ -12,13 +12,23 @@
     <title>Sign Up</title>
     <style>
         header {
+            background-image: url("{% static 'Images/BannerV.3.png' %}");
+            background-size: cover;
+            background-position: center;
+            height: auto;
+            width: auto;
+            margin: 0;
+            padding: 270;
+            border: none;
             font-family: "Rye", serif;
-            background-color: rgb(101, 155, 113);
-            color: black;
-            padding: 1rem 0;
             text-align: center;
             text-shadow: 0 0 3px white;
         }
+        
+        header img {
+            display: none;
+        }
+
         footer {
             font-family: 'Abril Fatface';
             text-align: center;
@@ -32,7 +42,6 @@
 
 <body>
     <header>
-        <h1>Welcome to the wonderful website of plant information!</h1>
         <nav aria-label="Main navigation">
             {% if is_authenticated %}
           <h1> {{ username }}!</h1>
@@ -56,9 +65,9 @@
     <p>Already have an account? <a href="/login/">Login</a></p>
     <footer>
         <p>&copy; 
-     We acknowledge that we live, play, and work on the traditional unceded lands of the Dënéndeh, Dakeł Keyoh, and Lheidli T'enneh. <br>
-    2025 Sacred Circle Macikwanâsa. All rights reserved.</p>
-        </footer>
+            We acknowledge that we live, play, and work on the traditional unceded lands of the Dënéndeh, Dakeł Keyoh, and Lheidli T'enneh. <br>
+            2025 Sacred Circle Macikwanâsa. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
